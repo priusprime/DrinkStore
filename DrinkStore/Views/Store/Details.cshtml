@@ -1,0 +1,25 @@
+@model DrinkStore.Models.Drink
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Model.Title</h2>
+
+<p>
+    <img alt="@Model.Title" src="@Url.Content(@Model.DrinkArtUrl)" />
+</p>
+<div>
+    <p>
+        <em>Style:</em>
+        @Model.Style.Title
+    </p>
+    <p>
+        <em>Price:</em>
+        @Model.Price
+    </p>
+
+    <p class="button">
+        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.DrinkID">Add to cart</a>
+    </p>
+</div>

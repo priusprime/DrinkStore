@@ -1,0 +1,17 @@
+@model IEnumerable<DrinkStore.Models.Style>
+
+@{
+    ViewData["Title"] = "Store";
+}
+
+<h2>Browse Styles</h2>
+
+<p>
+    Select from @Model.Count() styles:
+</p>
+<ul class="list-group">
+    @foreach(var style in Model)
+    {
+        <li class="list-group-item"><a asp-controller="Store" asp-action="Browse" asp-route-style="@style.Title">@style.Title</a></li>
+    }
+</ul>

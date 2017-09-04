@@ -1,0 +1,53 @@
+@model IEnumerable<DrinkStore.Models.Drink>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New","Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DrinkArtUrl)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Style)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img height="50" alt="@item.Title" src="@Url.Content(@item.DrinkArtUrl)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Style.Title)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DrinkID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DrinkID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DrinkID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

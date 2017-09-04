@@ -1,0 +1,25 @@
+@model DrinkStore.Models.Style
+
+@{
+    ViewData["Title"] = "Browse";
+}
+<div class="style">
+    <h3>
+        <em>@Model.Title</em> Drinks
+    </h3>
+
+    <ul class="list-unstyled">
+        @foreach(var drink in Model.Drinks)
+        {
+            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container">
+                <a asp-controller="Store" asp-action="Details" asp-route-id="@drink.DrinkID">
+                    @if(!string.IsNullOrEmpty(drink.DrinkArtUrl))
+                    {
+                    <img height="150" alt="@drink.Title" src="@Url.Content(@drink.DrinkArtUrl)" />
+                    }
+                    <h5 class="control-label">@drink.Title</h5>
+                </a>
+            </li>
+        }
+    </ul>
+</div>
